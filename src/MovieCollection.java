@@ -36,6 +36,7 @@ public class MovieCollection
                 }
             }
         }
+        Collections.sort(cast);
         Collections.sort(genre);
     }
 
@@ -190,7 +191,6 @@ public class MovieCollection
 
     private void searchCast()
     {
-        Collections.sort(cast);
         ArrayList<String> results = new ArrayList<>();
         System.out.print("Enter cast member search term: ");
         String searchTerm = scanner.nextLine();
