@@ -7,11 +7,23 @@ public class MovieCollection
 {
     private ArrayList<Movie> movies;
     private Scanner scanner;
+    private ArrayList<String> cast;
 
     public MovieCollection(String fileName)
     {
         importMovieList(fileName);
         scanner = new Scanner(System.in);
+        cast = new ArrayList<>();
+        for (int i = 0; i < movies.size(); i++) {
+            String castMembers[] = movies.get(i).getCast().split("\\|");
+            List<String> c = new ArrayList<String>();
+            c = Arrays.asList(castMembers);
+            for (String n : c){
+                if (!(cast.contains(n))){
+                    cast.add(n);
+                }
+            }
+        }
     }
 
     public ArrayList<Movie> getMovies()
@@ -165,17 +177,6 @@ public class MovieCollection
 
     private void searchCast()
     {
-        ArrayList<String> cast = new ArrayList<String>();
-        for (int i = 0; i < movies.size(); i++) {
-            String castMembers[] = movies.get(i).getCast().split("\\|");
-            List<String> c = new ArrayList<String>();
-            c = Arrays.asList(castMembers);
-            for (String n : c){
-                if (!(cast.contains(n))){
-                    cast.add(n);
-                }
-            }
-        }
         Collections.sort(cast);
         ArrayList<String> results = new ArrayList<>();
         System.out.print("Enter cast member search term: ");
