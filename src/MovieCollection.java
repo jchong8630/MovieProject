@@ -36,6 +36,7 @@ public class MovieCollection
                 }
             }
         }
+        Collections.sort(genre);
     }
 
     public ArrayList<Movie> getMovies()
